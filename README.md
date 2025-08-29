@@ -1,21 +1,23 @@
-1. 🔧 提出物の仕様
+# 1. 🔧 提出物の仕様
 
-| 項目 | 内容 |
-|:-----------|:------------|
-| ファイル拡張子 | .py  |
-| 必須関数 |	get_move(board: list[list[list[int]]]) -> tuple[int, int] |
-| 戻り値 | (x, y) のタプル（0〜3 の範囲） |
-| 出力制御 |	最初に必ず print("send_board") を出力すること（ハンドシェイク用）。その他のデバッグ出力は自由（stderrに流れます）。 |
-利用可能ライブラリ	Python標準ライブラリのみ（一部禁止あり）
-禁止ライブラリ	os, sys, subprocess, socket, requests, urllib, http, asyncio, threading, multiprocessing, など
-禁止関数	open, eval, exec, compile, __import__, system, popen
-Pythonバージョン	サーバは Python 3.9 互換 で実行（match文など3.10以降専用構文は不可）
-実行制限	メモリ最大 約1GB、CPU時間 約3秒、1手あたり待ち時間上限 30秒
-失敗時の扱い	タイムアウト／異常終了／無効座標 → 左上から置けるマスに強制配置し、理由が記録されます
+| 項目              | 内容                                                                                                              |
+| :-------------- | :-------------------------------------------------------------------------------------------------------------- |
+| **ファイル拡張子**     | `.py`                                                                                                           |
+| **必須関数**        | `get_move(board: list[list[list[int]]]) -> tuple[int, int]`                                                     |
+| **戻り値**         | `(x, y)` のタプル（0〜3 の範囲）                                                                                          |
+| **利用可能ライブラリ**   | Python標準ライブラリのみ（一部禁止あり）                                                                                         |
+| **禁止ライブラリ**     | `os`, `sys`, `subprocess`, `socket`, `requests`, `urllib`, `http`, `asyncio`, `threading`, `multiprocessing`, … |
+| **禁止関数**        | `open`, `eval`, `exec`, `compile`, `__import__`, `system`, `popen`                                              |
+| **Pythonバージョン** | サーバは **Python 3.9 互換** で実行（`match` 文など3.10以降専用構文は不可）                                                            |
+| **実行制限**        | メモリ最大 約1GB、CPU時間 約3秒、1手あたり待ち時間上限 30秒                                                                            |
+| **失敗時の扱い**      | タイムアウト／異常終了／無効座標 → 左上から置けるマスに強制配置し、理由が記録される                                                                     |
 
-✔️ サンプル実装	
-	
-"# === main.py（このファイルで「MyAI.get_move」以外は変更しないでください）===
+---
+
+## ✔️ サンプル実装
+
+```python
+# === main.py（このファイルで「MyAI.get_move」以外は変更しないでください）===
 
 from abc import ABC, abstractmethod
 from typing import Tuple, List
@@ -26,7 +28,7 @@ Board = List[List[List[int]]]  # board[z][y][x]（0=空, 1=黒, 2=白）
 class Alg3D(ABC):
     @abstractmethod
     def get_move(self, board: Board) -> Tuple[int, int]:
-        """"""(x, y) を返す。0 <= x < 4, 0 <= y < 4""""""
+        """(x, y) を返す。0 <= x < 4, 0 <= y < 4"""
         ...
 
 # ここから自由にアルゴリズムを記入 ----------------------------------------
@@ -35,7 +37,7 @@ class MyAI(Alg3D):
         # ここに自由にアルゴリズムを書いてください。
         # 必ず (x, y) を返してください（0 <= x < 4, 0 <= y < 4）。
         # 例・ヒントやサンプル実装は入れていません。
-        raise NotImplementedError(""ここに実装してください"")
+        raise NotImplementedError("ここに実装してください")
 # ----------------------------------------------------------------------
 
 # 変更禁止: サーバが呼ぶエントリポイント（削除・変更しない）
@@ -43,14 +45,48 @@ _ai = MyAI()
 
 def get_move(board: Board) -> Tuple[int, int]:
     return _ai.get_move(board)
-"	
-	
-2. 📦 提出方法（GitHub 経由）	
-	
-	
-"提出は、以下のリポジトリを フォーク（Fork） して、自分のアカウントにコピーしてください。
-フォークした後のリポジトリを編集して提出用に使います。
-Private（非公開）ではなく Public（公開）リポジトリにしてください。"	
-リポジトリURL: https://github.com/zen-integration/algorithm_code	
-	
-上記形式で main.py を保存（ファイル名は必ず main.py）	
+```
+
+---
+
+# 2. 📦 提出方法（GitHub 経由）
+
+1. 以下のリポジトリを **Fork（フォーク）** して、自分の GitHub アカウントにコピーしてください。
+
+   * リポジトリURL: [https://github.com/zen-integration/algorithm\_code](https://github.com/zen-integration/algorithm_code)
+2. フォークした後のリポジトリを編集して提出用に使用します。
+3. ⚠️ **Private（非公開）ではなく Public（公開）リポジトリ** にしてください。
+4. `main.py` を必ずこの形式で保存してください（ファイル名も必ず `main.py`）。
+
+---
+
+# 3. 🧪 事前確認方法（ローカル）
+
+1. フォークして作成した **自分の GitHub アカウントのリポジトリ**を開きます。
+2. 「Code」ボタンを押して、HTTPS の URL をコピーしてください。
+
+   * 例: `https://github.com/自分のユーザー名/algorithm_code.git`
+3. サーバのメニューバーを開き、この URL を貼り付けてチーム登録します。
+
+---
+
+# 4. 🎮 本番ルール（イベント中）
+
+* **試合形式**: 2試合制（先攻・後攻を入れ替え）
+* **先攻/後攻**: じゃんけんで決定
+* **勝敗判定**:
+
+  * 勝利数が多い方が勝ち
+  * 同数なら「勝利までの手数」が短い方が勝ち
+  * さらに同数なら「後手勝ち」または再じゃんけん
+* **制限時間**: 1手あたり 30秒（超過すると左上から順に石が置かれる）
+* **結果表示**: 勝敗・手数・理由がリアルタイムに画面表示
+
+---
+
+# 5. 💬 質問・サポート
+
+* 提出や仕様に関する質問は **Slack** または **運営**まで。
+* 本番前に **テスト提出期間** を設ける予定です。
+
+---
