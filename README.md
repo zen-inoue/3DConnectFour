@@ -1,1 +1,1 @@
-# algorithm_code_sample
+# algorithm_code
