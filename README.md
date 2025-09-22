@@ -16,21 +16,15 @@
 
 ## ✔️ サンプル実装
 
+## 2. ✔️ サンプル実装
+
+```python
 from typing import Tuple
 from framework import Alg3D, Board
 
 class MyAI(Alg3D):
     def get_move(self, board: Board) -> Tuple[int, int]:
         # ここから自由にアルゴリズムを記入してください
-
-# 変更禁止: サーバが呼ぶエントリポイント（削除・変更しない）
-_ai = MyAI()
-
-def get_move(board: Board) -> Tuple[int, int]:
-    return _ai.get_move(board)
-```
-
----
 
 # 2. 📦 提出方法（GitHub 経由）
 
