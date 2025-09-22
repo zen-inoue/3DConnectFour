@@ -17,11 +17,11 @@
 ## ✔️ サンプル実装
 
 from typing import Tuple
-from framework import Alg3D, Board   
+from framework import Alg3D, Board
 
 class MyAI(Alg3D):
     def get_move(self, board: Board) -> Tuple[int, int]:
-        #ここから自由にアルゴリズムを記入
+        # ここから自由にアルゴリズムを記入してください
 
 # 変更禁止: サーバが呼ぶエントリポイント（削除・変更しない）
 _ai = MyAI()
